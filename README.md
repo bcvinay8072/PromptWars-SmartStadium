@@ -2,9 +2,8 @@
 
 **Nexus26** is a GenAI-enabled Smart Stadium assistant built for the FIFA World Cup 2026. It enhances the stadium experience by providing multilingual fan assistance, accessible navigation, and real-time operational intelligence for venue staff.
 
-## 🔗 Live Links
-- **GitHub Repository**: [Insert GitHub Repo Link]
-- **Deployed Application**: [Insert Live URL]
+## 🔗 Live Application
+- **Vercel Deployment**: [Insert Vercel URL Here]
 
 ## 🎯 Chosen Vertical & Problem Statement
 We target the **Smart Stadiums & Tournament Operations (Challenge 4)** vertical. 
@@ -26,7 +25,7 @@ Our approach centers on dual-persona empowerment:
 | **Styling** | Vanilla CSS (CSS Custom Properties) |
 | **AI Integration**| OpenAI models via AI Pipe Proxy |
 | **Testing** | Playwright (E2E), Jest + RTL (Unit) |
-| **Deployment** | Vercel (or preferred hosting) |
+| **Deployment** | Vercel |
 
 ## 📁 Project Structure
 
@@ -92,3 +91,15 @@ nexus26/
    npm test
    npm run test:e2e
    ```
+
+## 🌐 Deploying to Vercel
+
+The easiest way to deploy this Next.js application is to use the [Vercel Platform](https://vercel.com/new).
+
+1. Push your code to a GitHub repository.
+2. Import your repository into Vercel.
+3. In the environment variables configuration during deployment, ensure you add:
+   - `AI_PIPE_URL`
+   - `AI_PIPE_KEY`
+   - `AI_MODEL`
+4. Click **Deploy**. Vercel will automatically detect the Next.js framework and handle the build output seamlessly.
