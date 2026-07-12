@@ -2,7 +2,6 @@
   "extends": ["next/core-web-vitals", "next/typescript"],
   "rules": {
     "no-console": "error",
-    "@typescript-eslint/no-explicit-any": "error",
-    "react/no-inline-styles": "error"
+    "@typescript-eslint/no-explicit-any": "error"
   }
 }
