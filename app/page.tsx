@@ -66,7 +66,7 @@ export default function RoleSelector() {
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
       <div className="hero-section relative">
-        <div className="relative" style={{ zIndex: 1 }}>
+        <div className="relative z-1">
           <div className="mb-md">
             <span className="badge badge-accent mb-md">FIFA World Cup 2026</span>
           </div>
@@ -91,7 +91,7 @@ export default function RoleSelector() {
             className="role-card text-center"
             aria-label="Enter as a Fan"
           >
-            <div className="relative" style={{ zIndex: 1 }}>
+            <div className="relative z-1">
               <div className="mb-md">
                 <span className="text-display">⚽</span>
               </div>
@@ -108,7 +108,7 @@ export default function RoleSelector() {
             className="role-card text-center"
             aria-label="Enter as Venue Staff"
           >
-            <div className="relative" style={{ zIndex: 1 }}>
+            <div className="relative z-1">
               <div className="mb-md">
                 <span className="text-display">🎯</span>
               </div>

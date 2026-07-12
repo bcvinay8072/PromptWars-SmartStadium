@@ -86,17 +86,15 @@ export const StaffDashboard = () => {
             {/* Capacity Bar */}
             <div className="rounded-full overflow-hidden" aria-hidden="true">
               <div
-                className="rounded-full"
+                className="rounded-full progress-bar-fill"
                 role="progressbar"
                 aria-valuenow={MOCK_METRICS.attendance.value}
                 aria-valuemin={0}
                 aria-valuemax={MOCK_METRICS.attendance.capacity}
                 aria-label="Stadium capacity"
                 style={{
-                  width: `${(MOCK_METRICS.attendance.value / MOCK_METRICS.attendance.capacity) * 100}%`,
-                  height: '6px',
-                  background: 'linear-gradient(90deg, var(--accent-primary), var(--accent-secondary))',
-                }}
+                  '--progress-width': `${(MOCK_METRICS.attendance.value / MOCK_METRICS.attendance.capacity) * 100}%`
+                } as React.CSSProperties}
               />
             </div>
           </div>
