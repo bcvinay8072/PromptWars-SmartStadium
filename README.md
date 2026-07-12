@@ -3,7 +3,7 @@
 **Nexus26** is a GenAI-enabled Smart Stadium assistant built for the FIFA World Cup 2026. It enhances the stadium experience by providing multilingual fan assistance, accessible navigation, and real-time operational intelligence for venue staff.
 
 ## 🔗 Live Application
-- **Vercel Deployment**: [Insert Vercel URL Here]
+- **Vercel Deployment**: https://prompt-wars-smart-stadium-three.vercel.app/
 
 ## 🎯 Chosen Vertical & Problem Statement
 We target the **Smart Stadiums & Tournament Operations (Challenge 4)** vertical. 
