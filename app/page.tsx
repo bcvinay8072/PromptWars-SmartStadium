@@ -1,11 +1,20 @@
 'use client';
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 
 /**
  * The available user roles in the Nexus26 application.
  */
 type UserRole = 'fan' | 'staff' | null;
+
+const FanDashboard = dynamic(() =>
+  import('@/components/FanDashboard').then((mod) => mod.FanDashboard)
+);
+
+const StaffDashboard = dynamic(() =>
+  import('@/components/StaffDashboard').then((mod) => mod.StaffDashboard)
+);
 
 /**
  * Role selection landing page with lazy-loaded dashboards.
@@ -19,7 +28,6 @@ export default function RoleSelector() {
   const [role, setRole] = useState<UserRole>(null);
 
   if (role === 'fan') {
-    const { FanDashboard } = require('@/components/FanDashboard');
     return (
       <div className="max-w-md mx-auto p-lg min-h-screen">
         <header className="flex items-center justify-between mb-lg">
@@ -41,7 +49,6 @@ export default function RoleSelector() {
   }
 
   if (role === 'staff') {
-    const { StaffDashboard } = require('@/components/StaffDashboard');
     return (
       <div className="max-w-md mx-auto p-lg min-h-screen">
         <header className="flex items-center justify-between mb-lg">
