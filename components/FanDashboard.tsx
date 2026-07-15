@@ -15,7 +15,7 @@ const ChatInterface = lazy(() =>
  * @example
  * <FanDashboard />
  */
-const FanDashboardBase = () => {
+const FanDashboardBase = (): React.ReactNode => {
   const [activeTab, setActiveTab] = useState<'chat' | 'navigate' | 'transport'>('chat');
 
   return (

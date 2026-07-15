@@ -1,8 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-import { FanDashboard } from '@/components/FanDashboard';
-import { StaffDashboard } from '@/components/StaffDashboard';
+import { useState, lazy, Suspense } from 'react';
+
+/** Lazily loaded Fan Portal dashboard */
+const FanDashboard = lazy(() =>
+  import('@/components/FanDashboard').then((m) => ({ default: m.FanDashboard }))
+);
+
+/** Lazily loaded Staff Command dashboard */
+const StaffDashboard = lazy(() =>
+  import('@/components/StaffDashboard').then((m) => ({ default: m.StaffDashboard }))
+);
 
 /**
  * The available user roles in the Nexus26 application.
@@ -17,7 +25,7 @@ type UserRole = 'fan' | 'staff' | null;
  * @example
  * <RoleSelector />
  */
-export default function RoleSelector() {
+export default function RoleSelector(): React.ReactNode {
   const [role, setRole] = useState<UserRole>(null);
 
   if (role === 'fan') {
@@ -35,7 +43,9 @@ export default function RoleSelector() {
         <main id="main-content" role="main">
           <h1 className="text-title mb-sm">Fan Portal</h1>
           <p className="text-subtitle mb-lg">Your AI-powered stadium guide</p>
-          <FanDashboard />
+          <Suspense fallback={<div className="glass-panel p-lg text-center text-muted">Loading Fan Portal...</div>}>
+            <FanDashboard />
+          </Suspense>
         </main>
       </div>
     );
@@ -56,7 +66,9 @@ export default function RoleSelector() {
         <main id="main-content" role="main">
           <h1 className="text-title mb-sm">Operational Command</h1>
           <p className="text-subtitle mb-lg">Real-time venue intelligence</p>
-          <StaffDashboard />
+          <Suspense fallback={<div className="glass-panel p-lg text-center text-muted">Loading Staff Portal...</div>}>
+            <StaffDashboard />
+          </Suspense>
         </main>
       </div>
     );

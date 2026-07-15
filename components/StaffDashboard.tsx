@@ -30,7 +30,7 @@ function getStatusClass(status: MetricStatus): string {
  * @example
  * <StaffDashboard />
  */
-const StaffDashboardBase = () => {
+const StaffDashboardBase = (): React.ReactNode => {
   const [activeTab, setActiveTab] = useState<'overview' | 'intelligence'>('overview');
   const progressBarRef = useRef<HTMLDivElement>(null);
 

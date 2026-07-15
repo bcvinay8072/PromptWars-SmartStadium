@@ -34,7 +34,7 @@ export interface ChatInterfaceProps {
  * @example
  * <ChatInterface context="fan" />
  */
-const ChatInterfaceBase = ({ context = 'fan' }: ChatInterfaceProps) => {
+const ChatInterfaceBase = ({ context = 'fan' }: ChatInterfaceProps): React.ReactNode => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
