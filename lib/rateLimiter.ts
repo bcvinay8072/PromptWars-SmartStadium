@@ -2,12 +2,30 @@
  * @module lib/rateLimiter
  * Token Bucket Rate Limiter to prevent API abuse.
  */
+/**
+ * Token Bucket Rate Limiter to prevent API abuse.
+ * Uses a refilling token bucket algorithm where tokens are consumed per request
+ * and refilled at a configurable rate.
+ *
+ * @example
+ * const limiter = new RateLimiter(10, 2000);
+ * if (limiter.canProceed()) { // process request }
+ */
 export class RateLimiter {
+  /** Current number of available tokens */
   tokens: number;
+  /** Maximum number of tokens the bucket can hold */
   readonly maxTokens: number;
+  /** Time in milliseconds between token refills */
   readonly refillRate: number;
+  /** Timestamp of the last token refill */
   lastRefill: number;
 
+  /**
+   * Creates a new RateLimiter instance.
+   * @param maxTokens - Maximum tokens in the bucket (default: 10)
+   * @param refillRateMs - Milliseconds between token refills (default: 2000)
+   */
   constructor(maxTokens = 10, refillRateMs = 2000) {
     this.maxTokens = maxTokens;
     this.tokens = maxTokens;
@@ -34,4 +52,5 @@ export class RateLimiter {
   }
 }
 
+/** Global rate limiter instance shared across all API requests */
 export const globalRateLimiter = new RateLimiter();

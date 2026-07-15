@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback, FormEvent } from 'react';
+import { useState, useRef, useEffect, useCallback, memo, FormEvent } from 'react';
 import { sanitizeInput } from '@/lib/utils';
 
 /**
@@ -34,7 +34,7 @@ export interface ChatInterfaceProps {
  * @example
  * <ChatInterface context="fan" />
  */
-export const ChatInterface = ({ context = 'fan' }: ChatInterfaceProps) => {
+const ChatInterfaceBase = ({ context = 'fan' }: ChatInterfaceProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
@@ -151,3 +151,9 @@ export const ChatInterface = ({ context = 'fan' }: ChatInterfaceProps) => {
     </div>
   );
 };
+
+/**
+ * Memoized ChatInterface component to prevent unnecessary re-renders.
+ */
+export const ChatInterface = memo(ChatInterfaceBase);
+ChatInterface.displayName = 'ChatInterface';

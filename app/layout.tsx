@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   description: 'GenAI-enabled solution for the FIFA World Cup 2026',
 };
 
+/**
+ * Root layout component for the Nexus26 application.
+ * Wraps all pages with global metadata, ErrorBoundary, and skip navigation link.
+ *
+ * @param props - The layout props containing child page components
+ * @returns The rendered root HTML layout
+ */
 export default function RootLayout({
   children,
 }: {

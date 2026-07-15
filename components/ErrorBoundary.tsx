@@ -2,10 +2,19 @@
 
 import { Component, ReactNode } from 'react';
 
+/**
+ * Props for the ErrorBoundary component.
+ * @property children - The child components to wrap with error handling
+ */
 interface Props {
   children: ReactNode;
 }
 
+/**
+ * Internal state for the ErrorBoundary component.
+ * @property hasError - Whether an error has been caught
+ * @property errorMessage - The message from the caught error
+ */
 interface State {
   hasError: boolean;
   errorMessage: string;

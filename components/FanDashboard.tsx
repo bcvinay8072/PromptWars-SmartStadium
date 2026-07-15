@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, lazy, Suspense } from 'react';
+import { useState, lazy, Suspense, memo } from 'react';
 import { MOCK_METRICS } from '@/lib/constants';
 
 const ChatInterface = lazy(() =>
@@ -15,7 +15,7 @@ const ChatInterface = lazy(() =>
  * @example
  * <FanDashboard />
  */
-export const FanDashboard = () => {
+const FanDashboardBase = () => {
   const [activeTab, setActiveTab] = useState<'chat' | 'navigate' | 'transport'>('chat');
 
   return (
@@ -114,3 +114,9 @@ export const FanDashboard = () => {
     </div>
   );
 };
+
+/**
+ * Memoized FanDashboard component to prevent unnecessary re-renders.
+ */
+export const FanDashboard = memo(FanDashboardBase);
+FanDashboard.displayName = 'FanDashboard';

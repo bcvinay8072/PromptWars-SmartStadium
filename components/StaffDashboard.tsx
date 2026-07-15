@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, lazy, Suspense } from 'react';
+import { useState, useRef, useEffect, useMemo, lazy, Suspense, memo } from 'react';
 import { MOCK_METRICS } from '@/lib/constants';
 import type { MetricStatus } from '@/lib/constants';
 
@@ -30,8 +30,19 @@ function getStatusClass(status: MetricStatus): string {
  * @example
  * <StaffDashboard />
  */
-export const StaffDashboard = () => {
+const StaffDashboardBase = () => {
   const [activeTab, setActiveTab] = useState<'overview' | 'intelligence'>('overview');
+  const progressBarRef = useRef<HTMLDivElement>(null);
+
+  /** Computed stadium capacity percentage */
+  const capacityPercent = useMemo(
+    () => (MOCK_METRICS.attendance.value / MOCK_METRICS.attendance.capacity) * 100,
+    []
+  );
+
+  useEffect(() => {
+    progressBarRef.current?.style.setProperty('--progress-width', `${capacityPercent}%`);
+  }, [capacityPercent]);
 
   return (
     <div className="flex flex-col gap-lg animate-slideUp">
@@ -86,15 +97,13 @@ export const StaffDashboard = () => {
             {/* Capacity Bar */}
             <div className="rounded-full overflow-hidden" aria-hidden="true">
               <div
+                ref={progressBarRef}
                 className="rounded-full progress-bar-fill"
                 role="progressbar"
                 aria-valuenow={MOCK_METRICS.attendance.value}
                 aria-valuemin={0}
                 aria-valuemax={MOCK_METRICS.attendance.capacity}
                 aria-label="Stadium capacity"
-                style={{
-                  '--progress-width': `${(MOCK_METRICS.attendance.value / MOCK_METRICS.attendance.capacity) * 100}%`
-                } as React.CSSProperties}
               />
             </div>
           </div>
@@ -134,3 +143,9 @@ export const StaffDashboard = () => {
     </div>
   );
 };
+
+/**
+ * Memoized StaffDashboard component to prevent unnecessary re-renders.
+ */
+export const StaffDashboard = memo(StaffDashboardBase);
+StaffDashboard.displayName = 'StaffDashboard';
